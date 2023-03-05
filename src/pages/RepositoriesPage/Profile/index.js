@@ -1,33 +1,49 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import { MdGroup, MdLocationCity, MdLink } from 'react-icons/md';
 
 import { Container, Header, Avatar, Login, Name, Inner, Data } from './styles';
 
-const Profile = () => (
+const Profile = ({ user }) => (
   <Container>
     <Header>
-      <Avatar src="https://avatars.githubusercontent.com/u/94402903?v=4" />
-      <Login>Nalbert26</Login>
-      <Name>Nalbert</Name>
+      <Avatar src={user.avatar_url} />
+      <Login>{user.login}</Login>
+      <Name>{user.name}</Name>
     </Header>
     <Inner>
       <Data>
         <MdGroup size={20} />
-        30&nbsp;<i>seguidores</i>&nbsp;&middot;&nbsp;10&nbsp;<i>seguindo</i>
+        {user.following}&nbsp;<i>seguidores</i>&nbsp;&middot;&nbsp;
+        {user.followers}&nbsp;<i>seguindo</i>
       </Data>
-      <Data>
-        <MdLocationCity size={20} />
-        Santo André
-      </Data>
-      <Data>
-        <MdLink size={20} />
-        <a href="https://nalbertjesus.onrender.com/">
-          nalbertjesus.onrender.com
-        </a>
-      </Data>
+      {user.location && (
+        <Data>
+          <MdLocationCity size={20} />
+          {user.location}
+        </Data>
+      )}
+      {user.blog && (
+        <Data>
+          <MdLink size={20} />
+          <a href={`\\${user.blog} `}>{user.blog}</a>
+        </Data>
+      )}
     </Inner>
   </Container>
 );
+
+Profile.propTypes = {
+  user: PropTypes.shape({
+    login: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    avatar_url: PropTypes.string.isRequired,
+    followers: PropTypes.number.isRequired,
+    following: PropTypes.number.isRequired,
+    company: PropTypes.string,
+    blog: PropTypes.string,
+    location: PropTypes.string,
+  }).isRequired,
+};
 
 export default Profile;
