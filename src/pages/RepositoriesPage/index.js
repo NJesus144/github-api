@@ -5,6 +5,7 @@ import Filter from './Filter';
 import Repositories from './Repositories';
 
 import { Container, Sidebar, Main } from './styles';
+import { getLangsFrom } from '../../services/api';
 
 const RepositoriesPage = () => {
   const user = {
@@ -18,11 +19,52 @@ const RepositoriesPage = () => {
     location: null,
   };
 
+  const repositories = [
+    {
+      name: 'Repo 1',
+      description: 'Descrição',
+      html_url: 'https://nalbertjesus.onrender.com/',
+      language: 'Javascript',
+    },
+    {
+      name: 'Repo 2',
+      description: 'Descrição',
+      html_url: 'https://nalbertjesus.onrender.com/',
+      language: 'Javascript',
+    },
+    {
+      name: 'Repo 3',
+      description: 'Descrição',
+      html_url: 'https://nalbertjesus.onrender.com/',
+      language: 'PHP',
+    },
+    {
+      name: 'Repo 4',
+      description: 'Descrição',
+      html_url: 'https://nalbertjesus.onrender.com/',
+      language: 'Ruby',
+    },
+    {
+      name: 'Repo 5',
+      description: 'Descrição',
+      html_url: 'https://nalbertjesus.onrender.com/',
+      language: 'Java',
+    },
+    {
+      name: 'Repo 6',
+      description: 'Descrição',
+      html_url: 'https://nalbertjesus.onrender.com/',
+      language: 'Ruby',
+    },
+  ];
+
+  const languages = getLangsFrom(repositories);
+
   return (
     <Container>
       <Sidebar>
         <Profile user={user} />
-        <Filter />
+        <Filter languages={languages} />
       </Sidebar>
       <Main>
         <Repositories />
