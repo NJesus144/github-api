@@ -28,5 +28,5 @@ export const getLangsFrom = (repositories) => {
     }))
     .sort((a, b) => b.count - a.count);
 
-    return stats;
+  return stats;
 };

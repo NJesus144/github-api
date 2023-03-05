@@ -21,36 +21,42 @@ const RepositoriesPage = () => {
 
   const repositories = [
     {
+      id: '1',
       name: 'Repo 1',
       description: 'Descrição',
       html_url: 'https://nalbertjesus.onrender.com/',
       language: 'Javascript',
     },
     {
+      id: '2',
       name: 'Repo 2',
       description: 'Descrição',
       html_url: 'https://nalbertjesus.onrender.com/',
       language: 'Javascript',
     },
     {
+      id: '3',
       name: 'Repo 3',
       description: 'Descrição',
       html_url: 'https://nalbertjesus.onrender.com/',
       language: 'PHP',
     },
     {
+      id: '4',
       name: 'Repo 4',
       description: 'Descrição',
       html_url: 'https://nalbertjesus.onrender.com/',
       language: 'Ruby',
     },
     {
+      id: '5',
       name: 'Repo 5',
       description: 'Descrição',
       html_url: 'https://nalbertjesus.onrender.com/',
       language: 'Java',
     },
     {
+      id: '6',
       name: 'Repo 6',
       description: 'Descrição',
       html_url: 'https://nalbertjesus.onrender.com/',
@@ -67,7 +73,7 @@ const RepositoriesPage = () => {
         <Filter languages={languages} />
       </Sidebar>
       <Main>
-        <Repositories />
+        <Repositories repositories={repositories} />
       </Main>
     </Container>
   );
